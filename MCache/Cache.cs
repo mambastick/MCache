@@ -1,6 +1,6 @@
 ﻿namespace MCache;
 
-public class MCache<T>
+public class Cache<T>
 {
     private readonly Dictionary<object, T?> _cache = new();
 
@@ -10,10 +10,9 @@ public class MCache<T>
     {
         if (!_cache.TryGetValue(key, out var cacheItem))
             return default; 
+        
         if (cacheItem != null)
-        {
             return cacheItem;
-        }
         
         _cache.Remove(key);
         return default;
